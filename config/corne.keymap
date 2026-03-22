@@ -61,12 +61,15 @@
 // | SHFT |  ?  |  |  |  <  |  >  |  `  |   |  _  |  *  |  €  |     |     | ESC  |
 //                     | CMD |     | SPC |   | ENT |     | OPT |
                         bindings = <
-   &kp TAB   &kp EXCL   &kp AT      &kp RA(N3) &kp DLLR  &kp LBRC   &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &kp BSPC
-   &kp LCTRL &kp LS(RA(N7)) &kp RA(LBKT) &kp RA(RBKT) &kp LS(RA(SEMI)) &kp FSLH &kp RBKT &kp LS(RA(LBKT)) &kp LS(RA(RBKT)) &kp LS(COMMA) &kp LS(DOT)
-   &kp LSHFT &kp QMARK  &kp PIPE    &kp LT     &kp GT    &kp GRAVE  &kp UNDER &kp ASTRK &kp RA(E) &trans   &trans   &kp ESC
-                             &kp LGUI &trans &kp SPACE   &kp RET   &trans    &kp RALT
-                        >;
-                };
+   // Fila 1: ! " # $ % & / ( ) = ?
+   &kp TAB    &kp LS(N1)    &kp ES_DQUOT  &kp RA(N3)    &kp LS(N4)    &kp LS(N5)     &kp LS(N6) &kp LS(N7) &kp LS(N8) &kp LS(N9) &kp LS(N0) &kp BSPC
+
+   // Fila 2: @ \ [ ] ~ - + { } ; :
+   // Nota: En Mac ES, [ es Option+Shift+8 y ] es Option+Shift+9
+   &kp LCTRL  &kp RA(N2)    &kp RA(LS(N7)) &kp RA(LS(N8)) &kp RA(LS(N9)) &kp RA(N)     &kp ES_MINUS &kp ES_PLUS &kp RA(N8) &kp RA(N9)  &kp LS(COMMA) &kp LS(DOT)
+
+   &kp LSHFT  &kp LS(ES_MINUS) &kp RA(N1) &kp ES_LT &kp ES_GT &kp ES_GRAVE &kp LS(ES_MINUS) &kp LS(DOT) &kp RA(E) &trans &trans &kp ESC
+>;
 
                 adjust_layer {
 // --------------------------------------------------------------------------------------------------
