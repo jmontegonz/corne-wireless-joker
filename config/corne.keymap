@@ -53,10 +53,16 @@
                         >;
                 };
 
-                                raise_layer {
+                        raise_layer {
+// --------------------------------------------------------------------------------------------------
+//
+// |  TAB |  !  |  "  |  #  |  $  |  ^  |   |  &  |  /  |  (  |  )  |  =  | BSPC |
+// | CTRL |  @  |  \  |  [  |  ]  |  ~  |   |  -  |  +  |  {  |  }  |  ;  |  :   |
+// | SHFT |  ?  |  |  |  <  |  >  |  `  |   |  _  |  *  |  €  |     |     | ESC  |
+//                     | CMD |     | SPC |   | ENT |     | OPT |
                         bindings = <
    &kp TAB   &kp EXCL   &kp AT      &kp RA(N3) &kp DLLR  &kp LBRC   &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &kp BSPC
-   &kp LCTRL &kp AT     &kp BSLH    &kp LBKT   &kp RBKT  &kp TILDE  &kp MINUS &kp PLUS  &kp LBRC  &kp RBRC &kp SEMI &kp COLON
+   &kp LCTRL &kp RA(N2) &kp RA(N6)  &kp RA(LBKT) &kp RA(RBKT) &kp LS(RA(SEMI)) &kp FSLH &kp RBKT &kp LS(RA(LBKT)) &kp LS(RA(RBKT)) &kp LS(COMMA) &kp LS(DOT)
    &kp LSHFT &kp QMARK  &kp PIPE    &kp LT     &kp GT    &kp GRAVE  &kp UNDER &kp ASTRK &kp RA(E) &trans   &trans   &kp ESC
                              &kp LGUI &trans &kp SPACE   &kp RET   &trans    &kp RALT
                         >;
