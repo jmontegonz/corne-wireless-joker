@@ -1,5 +1,5 @@
 /*
- * Corne Keyboard Keymap - Full Spanish ISO (Mac Optimized - THE LAST FIX)
+ * Corne Keyboard Keymap - Full Spanish ISO (Mac Optimized - BACKSLASH FIX)
  */
 
 #include <behaviors.dtsi>
@@ -7,7 +7,7 @@
 #include <dt-bindings/zmk/bt.h>
 
 /* -------------------------------------------------------------------------- */
-/* DEFINICIONES MANUALES PARA MAC ESPAÑOL (ISO) - CORREGIDAS                  */
+/* DEFINICIONES MANUALES PARA MAC ESPAÑOL (ISO)                               */
 /* -------------------------------------------------------------------------- */
 
 #define ES_NTIL SEMI          // Ñ
@@ -31,8 +31,8 @@
 #define ES_AT   RA(N2)        // @ (Alt + 2)
 #define ES_HASH RA(N3)        // # (Alt + 3)
 
-// FIX DEFINITIVO PARA BACKSLASH \ EN MAC
-#define ES_BSLS RA(GRAVE)    
+// EL FIX DEFINITIVO PARA EL BACKSLASH \ EN MAC ISO
+#define ES_BSLS LS(RA(N7))    
 
 #define ES_PERC LS(N5)        // %
 #define ES_AMPR LS(N6)        // &
