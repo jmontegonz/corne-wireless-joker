@@ -1,5 +1,6 @@
 /*
- * Corne Keyboard Keymap - Full Spanish ISO (Mac Optimized - BSLS FINAL FIX)
+ * Corne Keyboard Keymap - Full Spanish ISO (Mac Optimized - THE FINAL REPAIR)
+ * Capas: BASE, LOWER, RAISE, ADJUST (LOWER + RAISE)
  */
 
 #include <behaviors.dtsi>
@@ -7,49 +8,52 @@
 #include <dt-bindings/zmk/bt.h>
 
 /* -------------------------------------------------------------------------- */
-/* DEFINICIONES MANUALES                                                      */
+/* DEFINICIONES MANUALES PARA MAC ESPAÑOL (ISO)                               */
 /* -------------------------------------------------------------------------- */
 
-#define ES_NTIL SEMI          
-#define ES_ACUT SQT           
-#define ES_MINS SLASH         
+#define ES_NTIL SEMI          // Ñ
+#define ES_ACUT SQT           // ´ (Acento)
+#define ES_MINS SLASH         // -
+
+// FIX PARA MAC: < y > (En Mac ISO se usa el código de GRAVE)
 #define ES_LABK GRAVE         
 #define ES_RABK LS(GRAVE)     
-#define ES_LCBR RA(SQT)       
-#define ES_RCBR RA(NON_US_HASH) 
-#define ES_LPRN LS(N8)        
-#define ES_RPRN LS(N9)        
-#define ES_LBKT RA(LBKT)      
-#define ES_RBKT RA(RBKT)      
-#define ES_DLR  LS(N4)        
-#define ES_SLSH LS(N7)        
-#define ES_DQUO LS(N2)        
-#define ES_PIPE RA(N1)        
-#define ES_AT   RA(N2)        
-#define ES_HASH RA(N3)        
 
-// FIX PARA MAC: Si el visor dice que es en el 7, es Shift + Alt + 7
-// Probamos esta sintaxis que es más robusta para macOS
-#define ES_BSLS LS(RA(NUMBER_7))    
+// EL FIX DEL BACKSLASH: En Mac ISO es Option + (tecla a la izquierda del 1)
+#define ES_BSLS RA(GRAVE)    
 
-#define ES_PERC LS(N5)        
-#define ES_AMPR LS(N6)        
-#define ES_EQL  LS(N0)        
-#define ES_QUOT MINUS         
-#define ES_ASTR LS(RBKT)      
-#define ES_PLUS RBKT          
-#define ES_IEXL EQUAL         
-#define ES_CIRC LS(LBKT)      
-#define ES_TILD RA(N4)        
-#define ES_GRV  LBKT          
-#define ES_DIAE LS(SQT)       
-#define ES_EURO RA(E)         
-#define ES_SCLN LS(COMMA)     
-#define ES_COLN LS(DOT)       
-#define ES_QUES LS(MINUS)     
-#define ES_IQUE LS(EQUAL)     
-#define ES_EXLM LS(N1)        
-#define ES_UNDS LS(SLASH)     
+#define ES_LCBR RA(SQT)       // { (Alt + ')
+#define ES_RCBR RA(NON_US_HASH) // } (Alt + ç)
+#define ES_LPRN LS(N8)        // (
+#define ES_RPRN LS(N9)        // )
+#define ES_LBKT RA(LBKT)      // [ (Alt + `)
+#define ES_RBKT RA(RBKT)      // ] (Alt + +)
+#define ES_DLR  LS(N4)        // $
+#define ES_SLSH LS(N7)        // /
+#define ES_DQUO LS(N2)        // "
+#define ES_PIPE RA(N1)        // | (Alt + 1)
+#define ES_AT   RA(N2)        // @ (Alt + 2)
+#define ES_HASH RA(N3)        // # (Alt + 3)
+
+#define ES_PERC LS(N5)        // %
+#define ES_AMPR LS(N6)        // &
+#define ES_EQL  LS(N0)        // =
+#define ES_QUOT MINUS         // '
+#define ES_ASTR LS(RBKT)      // *
+#define ES_PLUS RBKT          // +
+#define ES_IEXL EQUAL         // ¡
+
+#define ES_CIRC LS(LBKT)      // ^
+#define ES_TILD RA(N4)        // ~ (Alt + 4)
+#define ES_GRV  LBKT          // ` (Acento grave)
+#define ES_DIAE LS(SQT)       // ¨ (Diéresis)
+#define ES_EURO RA(E)         // €
+#define ES_SCLN LS(COMMA)     // ;
+#define ES_COLN LS(DOT)       // :
+#define ES_QUES LS(MINUS)     // ?
+#define ES_IQUE LS(EQUAL)     // ¿
+#define ES_EXLM LS(N1)        // !
+#define ES_UNDS LS(SLASH)     // _
 
 /* -------------------------------------------------------------------------- */
 /* KEYMAP                                                                     */
@@ -58,8 +62,17 @@
 #define BASE   0
 #define LOWER  1
 #define RAISE  2
+#define ADJUST 3
 
 / {
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        tri_layer {
+            if-layers = <LOWER RAISE>;
+            then-layer = <ADJUST>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -102,6 +115,21 @@
    &trans     &kp ES_CIRC  &kp ES_TILD  &kp ES_GRV   &kp ES_DIAE  &kp ES_EURO     &kp LEFT     &kp DOWN     &kp UP       &kp RIGHT    &kp ES_QUES  &kp ES_IQUE
    &kp LSHFT  &kp F11      &kp F12      &trans       &trans       &trans          &kp HOME     &kp PG_DN    &kp PG_UP    &kp END      &kp ES_EXLM  &kp ES_UNDS
                                      &kp LGUI     &trans       &kp SPACE       &kp RET      &trans       &kp RALT
+            >;
+        };
+
+        adjust_layer {
+// --------------------------------------------------------------------------------------------------
+// ADJUST = LOWER + RAISE
+// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   |     |     |     |     |     |      |
+// |      |     |     |     |     |     |   | V-  | V+  | P/P |     |     |      |
+// |      |     |     |     |     |     |   |     |     |     |     |     |      |
+//                     |     |     |     |   |     |     |     |
+            bindings = <
+   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4    &trans       &trans       &trans       &trans       &trans       &trans
+   &trans     &trans       &trans       &trans       &trans       &trans          &kp C_VOL_DN &kp C_VOL_UP &kp C_PP     &trans       &trans       &trans
+   &trans     &trans       &trans       &trans       &trans       &trans          &trans       &trans       &trans       &trans       &trans       &trans
+                                     &trans       &trans       &trans          &trans       &trans       &trans
             >;
         };
     };
