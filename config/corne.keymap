@@ -16,11 +16,11 @@
 #define ES_MINS SLASH         // -
 
 // FIX PARA MAC: < y > (En Mac ISO se usa el código de GRAVE)
-#define ES_LABK GRAVE         
-#define ES_RABK LS(GRAVE)     
+#define ES_LABK GRAVE
+#define ES_RABK LS(GRAVE)
 
-// EL FIX DEL BACKSLASH: En Mac ISO es Option + (tecla a la izquierda del 1)
-#define ES_BSLS RA(GRAVE)    
+// EL FIX DEL BACKSLASH
+#define USR_ES_BACKSLASH LA(NON_US_BSLH)
 
 #define ES_LCBR RA(SQT)       // { (Alt + ')
 #define ES_RCBR RA(NON_US_HASH) // } (Alt + ç)
@@ -99,7 +99,7 @@
             bindings = <
    &kp TAB    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5          &kp N6       &kp N7       &kp N8       &kp N9       &kp N0       &kp BSPC
    &trans     &kp ES_LABK  &kp ES_LCBR  &kp ES_LPRN  &kp ES_LBKT  &kp ES_DLR      &kp ES_SLSH  &kp ES_RBKT  &kp ES_RPRN  &kp ES_RCBR  &kp ES_RABK  &kp ES_DQUO
-   &kp LSHFT  &kp ES_PIPE  &kp ES_AT    &kp ES_HASH  &kp ES_BSLS  &kp ES_PERC     &kp ES_AMPR  &kp ES_EQL   &kp ES_QUOT  &kp ES_ASTR  &kp ES_PLUS  &kp ES_IEXL
+   &kp LSHFT  &kp ES_PIPE  &kp ES_AT    &kp ES_HASH  &kp USR_ES_BACKSLASH  &kp ES_PERC     &kp ES_AMPR  &kp ES_EQL   &kp ES_QUOT  &kp ES_ASTR  &kp ES_PLUS  &kp ES_IEXL
                                      &kp LGUI     &trans       &kp SPACE       &kp RET      &trans       &kp RALT
             >;
         };
